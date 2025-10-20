@@ -1,0 +1,17 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+do_not_track/
+session.session
+uv.lock
+.python-version
+pyproject.toml
+result.json
