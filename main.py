@@ -1,7 +1,10 @@
 import argparse
 import asyncio
+import settings
+from telethon import TelegramClient
 
-from settings import CHAT_IDENTIFIER, client
+
+from settings import API_ID, API_HASH, CHAT_IDENTIFIER
 from utils import (
     aggregate_messages,
     collect_last_7_days_messages,
@@ -13,6 +16,10 @@ from utils import (
 
 async def run(group_identifier: str, output_file: str):
     """Run the pipeline for given group identifier and write JSON to output_file."""
+    if settings.client is None:
+        settings.client = TelegramClient("session", API_ID, API_HASH)
+    client = settings.client
+
     try:
         await client.start()
         messages = await collect_last_7_days_messages(group_identifier)

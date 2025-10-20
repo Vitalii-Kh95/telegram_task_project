@@ -4,18 +4,19 @@ from datetime import datetime, timedelta, timezone
 
 from telethon.types import Channel, Chat, Message
 
-from settings import CHAT_IDENTIFIER, client
+from settings import CHAT_IDENTIFIER
+import settings
 
 
 async def _is_group(chat_identifier: str) -> bool:
-    entity = await client.get_entity(chat_identifier)
+    entity = await settings.client.get_entity(chat_identifier)
     return isinstance(entity, Chat) or (
         isinstance(entity, Channel) and bool(getattr(entity, "megagroup", False))
     )
 
 
 async def _is_supergroup(chat_identifier: str) -> bool:
-    entity = await client.get_entity(chat_identifier)
+    entity = await settings.client.get_entity(chat_identifier)
     return isinstance(entity, Channel) and bool(getattr(entity, "megagroup", False))
 
 
@@ -80,7 +81,7 @@ async def collect_last_7_days_messages(chat_identifier):
     cutoff = datetime.utcnow() - timedelta(days=7)
     messages = []
 
-    async for msg in client.iter_messages(chat_identifier, reverse=False):
+    async for msg in settings.client.iter_messages(chat_identifier, reverse=False):
         if not isinstance(msg, Message) or not msg.date:
             continue
 

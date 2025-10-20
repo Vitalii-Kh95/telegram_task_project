@@ -12,8 +12,16 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+### На Windows:
+```bash
+git clone https://github.com/Vitalii-Kh95/telegram_task_project.git
+py -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
+
 ## Предварительная настройка
-в файле settings.py нужно ввести API_ID и API_HASH. Я не стал использовать .env файл, потому что это тестовое задание.
+Возможно в файле settings.py нужно ввести API_ID и API_HASH. Я не стал использовать .env файл, потому что это тестовое задание.
 
 
 ## Запуск:
