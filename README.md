@@ -7,7 +7,9 @@ python 3.13
 ### На линуксе:
 
 ```bash
-cd task_project 
+git clone https://github.com/Vitalii-Kh95/telegram_task_project.git
+cd telegram_task_project
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
@@ -15,6 +17,7 @@ pip install -r requirements.txt
 ### На Windows:
 ```bash
 git clone https://github.com/Vitalii-Kh95/telegram_task_project.git
+cd telegram_task_project
 py -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
